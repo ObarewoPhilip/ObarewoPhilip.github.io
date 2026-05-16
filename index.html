@@ -739,8 +739,9 @@ I build critical electrical infrastructure that stays running &mdash; at city, f
 
             <!--=============== PORTFOLIO 1: AIITIS ===============-->
             <div class="portfolio__content grid swiper-slide">
-              <div class="portfolio__img" style="display:flex;align-items:center;justify-content:center;background:var(--container-color);height:265px;">
-                <i class="uil uil-server-network" style="font-size:7rem;color:var(--first-color);"></i>
+              <div class="portfolio__img" style="display:flex;flex-direction:column;gap:.5rem;">
+                <img src="assets/img/aiitis-inverter-backup.jpg" alt="AIITIS site power &mdash; pure-sine inverter/charger, MPPT controller, and distribution boards" loading="lazy" style="width:100%;border-radius:.5rem;" />
+                <img src="assets/img/aiitis-solar-mast.jpg" alt="AIITIS field infrastructure &mdash; rooftop solar array and communication mast installation" loading="lazy" style="width:100%;border-radius:.5rem;" />
               </div>
 
               <div class="portfolio__data">
@@ -801,8 +802,11 @@ I build critical electrical infrastructure that stays running &mdash; at city, f
 
             <!--=============== PORTFOLIO 3: SmartSAV ===============-->
             <div class="portfolio__content grid swiper-slide">
-              <div class="portfolio__img" style="display:flex;align-items:center;justify-content:center;background:var(--container-color);height:265px;">
-                <i class="uil uil-bolt-alt" style="font-size:7rem;color:var(--first-color);"></i>
+              <div class="portfolio__img" style="display:flex;flex-direction:column;gap:.5rem;">
+                <img src="assets/img/smartsav-v1-boards.jpg" alt="SmartSAV v1.0 &mdash; multiple populated boards on the bench (Cyberflux)" loading="lazy" style="width:100%;border-radius:.5rem;" />
+                <img src="assets/img/smartsav-v1-render-board.jpg" alt="SmartSAV-STA v1.0 &mdash; full PCB design render" loading="lazy" style="width:100%;border-radius:.5rem;" />
+                <img src="assets/img/smartsav-v1-render-detail.jpg" alt="SmartSAV-STA v1.0 &mdash; component-level render detail" loading="lazy" style="width:100%;border-radius:.5rem;" />
+                <img src="assets/img/smartsav-v2-render-board.jpg" alt="SmartSAV v2.0 &mdash; PCB design render" loading="lazy" style="width:100%;border-radius:.5rem;" />
               </div>
 
               <div class="portfolio__data">
@@ -811,10 +815,12 @@ I build critical electrical infrastructure that stays running &mdash; at city, f
                   SmartSAV Energy Management Platform (v1.0 &rarr; v2.0)
                 </h3>
                 <p class="portfolio__description">
-                  End-to-end intelligent power-management product family for Cosgrove estate developments.
-                  <br><br><strong>v1.0</strong> (~160 domestic units, Cosgrove Wuye): estate-wide LoRa-based normalised energy monitoring with custom TDMA scheduling, achieving <strong>99.2% uplink reliability over 2&nbsp;km</strong>.
-                  <br><strong>v2.0</strong> (~40 systems, Cosgrove Katampe): GSM / Wi-Fi real-time control with on-board STM32 / ESP32 edge logic, integrated BAS / load control, and onboard power stack (UPS / ATS, battery monitoring, relay sequencing, solar charging). Modbus RS-485 integration with JSY-MK-323 three-phase meters (IEC 62053-21 Class 1), solar inverters, and BMS, with WebSocket dashboards and threshold-based alarming.
-                  <br><br><strong>Stack:</strong> STM32, ESP32, LoRa RF, GSM, Wi-Fi, Modbus RS-485, Raspberry Pi, Node.js, custom PCBs (KiCad).
+                  <strong>The product.</strong> SmartSAV is an end-to-end embedded power-management product family for Cosgrove estate developments, developed under CyberFlux Nigeria Ltd. I lead its hardware and firmware across the v1&rarr;v2 architecture &mdash; board-level design and troubleshooting through prototype, first-article, and field-deployment phases, including DFM / DFT handoff to contract manufacturers.
+                  <br><br>
+                  <strong>v1.0 &mdash; monitoring</strong> (~160 domestic units, Cosgrove Wuye). Estate-wide LoRa-based normalised energy monitoring with a custom TDMA schedule, achieving <strong>99.2% uplink reliability over 2&nbsp;km</strong>. The TDMA cycle's latency made it monitoring-only &mdash; which set the brief for v2.
+                  <br><br>
+                  <strong>v2.0 &mdash; real-time control</strong> (~40 systems, Cosgrove Katampe). GSM / Wi-Fi telemetry with on-board STM32 / ESP32 edge control and a full onboard power stack: UPS / ATS, battery monitoring, relay sequencing, solar charging. Modbus RS-485 integration with JSY-MK-323 three-phase meters (IEC 62053-21 Class 1), solar inverters, and BMS, plus Cummins PowerCommand generator monitoring via Modbus RTU and a WebSocket dashboard with threshold alarming.
+                  <br><br><strong>Stack:</strong> STM32, ESP32, LoRa RF, GSM, Wi-Fi, Modbus RS-485 / RTU, Node.js, custom PCBs (KiCad).
                 </p>
                 <a
                   href="https://www.cyberflux.ltd"
