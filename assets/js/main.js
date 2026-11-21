@@ -95,7 +95,6 @@ modalCloses.forEach((modalClose) => {
 /*==================== PORTFOLIO SWIPER  ====================*/
 let swiperPortfolio = new Swiper('.portfolio__container', {
     cssMode: true,
-    loop: true,
 
     navigation: {
       nextEl: '.swiper-button-next',
@@ -135,12 +134,16 @@ function scrollActive(){
     sections.forEach(current =>{
         const sectionHeight = current.offsetHeight
         const sectionTop = current.offsetTop - 50;
-        sectionId = current.getAttribute('id')
+        const sectionId = current.getAttribute('id')
+        const link = document.querySelector('.nav__menu a[href*=' + sectionId + ']')
+
+        // Sections without a nav link (the hero) have nothing to highlight
+        if(!link) return
 
         if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
-            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active-link')
+            link.classList.add('active-link')
         }else{
-            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active-link')
+            link.classList.remove('active-link')
         }
     })
 }
@@ -190,3 +193,50 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
+
+/*==================== CASE-STUDY GALLERY ====================*/
+/* One delegated listener serves every gallery on the page */
+document.addEventListener('click', (e) => {
+    const thumb = e.target.closest('.gallery__thumb')
+    if(!thumb) return
+
+    const gallery = thumb.closest('.gallery'),
+          link = gallery.querySelector('.gallery__main'),
+          img = link.querySelector('img')
+
+    img.src = thumb.dataset.src
+    img.alt = thumb.dataset.alt || thumb.dataset.caption || ''
+    link.href = thumb.dataset.src
+    gallery.querySelector('.gallery__caption').textContent = thumb.dataset.caption || ''
+
+    gallery.querySelectorAll('.gallery__thumb').forEach(t => {
+        const isActive = t === thumb
+        t.classList.toggle('is-active', isActive)
+        t.setAttribute('aria-pressed', isActive)
+    })
+})
+
+/*==================== IMAGE VIEWER ====================*/
+/* Without <dialog> support the gallery image simply opens in a new tab */
+const lightbox = document.getElementById('lightbox')
+
+if(lightbox && typeof lightbox.showModal === 'function'){
+    const lightboxImg = lightbox.querySelector('.lightbox__img'),
+          lightboxCaption = lightbox.querySelector('.lightbox__caption')
+
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('.gallery__main')
+        if(!link) return
+
+        e.preventDefault()
+        lightboxImg.src = link.getAttribute('href')
+        lightboxImg.alt = link.querySelector('img').alt
+        lightboxCaption.textContent = link.closest('.gallery').querySelector('.gallery__caption').textContent
+        lightbox.showModal()
+    })
+
+    /* Close on the button or on the backdrop */
+    lightbox.addEventListener('click', (e) => {
+        if(e.target === lightbox || e.target.closest('.lightbox__close')) lightbox.close()
+    })
+}
